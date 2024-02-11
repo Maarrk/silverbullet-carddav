@@ -4,7 +4,8 @@
     "build": "silverbullet plug:compile --importmap import_map.json carddav.plug.yaml",
     "watch": "silverbullet plug:compile --importmap import_map.json carddav.plug.yaml -w",
     "install": "deno task build; cp carddav.plug.js test_space/_plug/",
-    "run": "silverbullet test_space"
+    "run": "silverbullet test_space",
+    "test": "deno test --allow-read --allow-env --allow-net"
   },
   "lint": {
     "rules": {

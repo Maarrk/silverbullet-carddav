@@ -1,5 +1,7 @@
 {
   "imports": {
-    "$sb/": "https://deno.land/x/silverbullet@0.7.1/plug-api/"
+    "$sb/": "https://deno.land/x/silverbullet@0.7.1/plug-api/",
+    "std/assert": "https://deno.land/std@0.215.0/assert/mod.ts",
+    "tsdav": "npm:tsdav@2.0.7"
   }
 }
