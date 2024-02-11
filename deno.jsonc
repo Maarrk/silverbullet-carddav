@@ -1,12 +1,16 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "build": "silverbullet plug:compile hello.plug.yaml",
-    "watch": "silverbullet plug:compile hello.plug.yaml -w"
+    "build": "silverbullet plug:compile --importmap import_map.json carddav.plug.yaml",
+    "watch": "silverbullet plug:compile --importmap import_map.json carddav.plug.yaml -w",
+    "install": "deno task build; cp carddav.plug.js test_space/_plug/",
+    "run": "silverbullet test_space"
   },
   "lint": {
     "rules": {
-      "exclude": ["no-explicit-any"]
+      "exclude": [
+        "no-explicit-any"
+      ]
     }
   },
   "fmt": {

@@ -1,0 +1,6 @@
+name: carddav
+functions:
+  helloWorld:
+    path: carddav.ts:helloWorld
+    command:
+      name: "CardDAV: Say hello"
