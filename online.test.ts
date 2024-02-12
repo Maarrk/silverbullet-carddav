@@ -1,5 +1,7 @@
 import { assert, assertEquals } from "std/assert";
 import { DAVClient } from "tsdav";
+// @deno-types="@types/dav"
+import * as dav from "dav";
 
 async function getSecrets(): Promise<{ password: string; serverUrl: string }> {
   const secrets = await Deno.readTextFile("./test_space/SECRETS.md");
@@ -11,7 +13,23 @@ async function getSecrets(): Promise<{ password: string; serverUrl: string }> {
   return { password: password, serverUrl: serverUrl };
 }
 
-Deno.test("Auth test", async () => {
+Deno.test("dav auth test", async () => {
+  const secrets = await getSecrets();
+
+  const xhr = new dav.transport.Basic(
+    new dav.Credentials({ username: "exemplar", password: secrets.password }),
+  );
+
+  const account = await dav.createAccount({
+    server: secrets.serverUrl,
+    accountType: "carddav",
+    xhr: xhr,
+  } as dav.CreateAccountOptions);
+
+  console.log(account);
+});
+
+Deno.test("tsdav auth test", { ignore: true }, async () => {
   const secrets = await getSecrets();
 
   const client = new DAVClient({
